@@ -1,0 +1,7 @@
+parameters:
+    elephant.user.provider.fosub_bridge.class: Elephant\UserBundle\Security\Core\User\FOSUBUserProvider
+
+services:
+    elephant.user.provider.fosub_bridge:
+        class: "%elephant.user.provider.fosub_bridge.class%"
+        arguments: [@fos_user.user_manager,{google: googleID}]

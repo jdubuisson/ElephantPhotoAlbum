@@ -1,0 +1,74 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        admin:
+            switch_user:        true
+            #context:            user
+            pattern:            /admin(.*)
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /admin/login
+                use_forward:    false
+                check_path:     /admin/login_check
+                failure_path:   null
+                use_referer:    true
+                default_target_path: /admin/dashboard
+            anonymous:    true
+            logout:
+                path:           /admin/logout
+                target:         /admin/login
+
+        secure_area:
+            pattern: ^/
+
+            oauth:
+                failure_path: /connect
+                login_path: /connect
+                check_path: /connect
+                default_target_path: /profile
+                provider: fos_userbundle
+                resource_owners:
+                    #github:           "/login/check-github"
+                    #twitter:          "/login/check-twitter"
+                    #facebook:          "/login/check-facebook"
+                    google:           "/login/check-google"
+                oauth_user_provider:
+                    service: elephant.user.provider.fosub_bridge
+
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                check_path: /login_check
+                login_path: /login
+                default_target_path: /profile
+
+            anonymous:    true
+            logout:
+                path:           /logout
+                target:         /connect #where to go after logout
+
+        dev:
+            pattern:  ^/(css|images|js)/
+            security: false
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/connect, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER }
+        - { path: ^/admin/, roles: ROLE_ADMIN }
