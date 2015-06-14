@@ -12,7 +12,7 @@
         "doctrine/orm": ">=2.2.3,<2.4-dev",
         "doctrine/doctrine-bundle": "1.2.*",
         "twig/extensions": "1.0.*",
-        "symfony/assetic-bundle": "2.3.*",
+        "symfony/assetic-bundle": "dev-master",
         "symfony/swiftmailer-bundle": "2.3.*",
         "symfony/monolog-bundle": "2.3.*",
         "sensio/distribution-bundle": "2.3.*",
@@ -24,11 +24,14 @@
 
         "friendsofsymfony/user-bundle": "v1.3.2",
         "hwi/oauth-bundle": "0.3.*@dev",
-        "knplabs/knp-menu-bundle": "~1.1",
+        "knplabs/knp-menu-bundle": "~2.0",
         "knplabs/knp-paginator-bundle": "dev-master",
+        "sonata-project/core-bundle": "~2.2",
         "sonata-project/admin-bundle": "dev-master",
         "sonata-project/user-bundle": "2.2.x-dev",
-        "sonata-project/doctrine-orm-admin-bundle": "~2.2"
+        "sonata-project/doctrine-orm-admin-bundle": "~2.2",
+
+        "mopa/bootstrap-bundle": "dev-master"
 
     },
     "scripts": {

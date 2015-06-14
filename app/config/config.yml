@@ -39,14 +39,13 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ ElephantWebsiteBundle ]
     #java: /usr/bin/java
     filters:
+        less:
+            node: /usr/bin/nodejs
+            node_paths: [/usr/local/lib/node_modules]
         cssrewrite: ~
-        #closure:
-        #    jar: %kernel.root_dir%/Resources/java/compiler.jar
-        #yui_css:
-        #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
 
 # Doctrine Configuration
 doctrine:
@@ -82,6 +81,9 @@ fos_user:
     registration:
         confirmation:
             enabled:    false # change to true for required email confirmation
+    group:
+        group_class:   Sonata\UserBundle\Entity\BaseGroup
+        group_manager: sonata.user.orm.group_manager
 
 
 sonata_block:
@@ -138,3 +140,6 @@ hwi_oauth:
             #twitter: twitterID
             #facebook: facebookID
             google: googleID
+
+mopa_bootstrap:
+    form: true

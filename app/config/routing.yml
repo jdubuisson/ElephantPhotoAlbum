@@ -2,6 +2,10 @@ elephant_user:
     resource: "@ElephantUserBundle/Resources/config/routing.yml"
     prefix:   /
 
+elephant_website:
+    resource: "@ElephantWebsiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
     prefix: /

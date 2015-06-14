@@ -1,0 +1,45 @@
+{% extends 'ElephantWebsiteBundle::layout.html.twig' %}
+
+
+{% block container %}
+    <div id="fullpage" class="home">
+        <div class="section elephant-1 explanations">
+            <div class="intro container rounded-img well">
+                <div class="row">
+                    <div class="col-md-8 text-center col-md-offset-2">
+                        <h1>qzergegzr</h1>
+
+                        <p>retbgh</p>
+
+                        <p>lorem</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section elephant-2 explanations">
+            <div class="intro container rounded-img well">
+                <div class="row">
+                    <div class="col-md-8 text-center col-md-offset-2">
+                        <h1>dfhrthsqrgrh</h1>
+
+                        <p>rhterthdstfh</p>
+
+                        <p>blablabli</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block body_end %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#fullpage').fullpage({
+                navigation: true
+            });
+        });
+    </script>
+{% endblock body_end %}

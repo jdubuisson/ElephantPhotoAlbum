@@ -1,0 +1,7 @@
+elephant_website_homepage:
+    path:     /
+    defaults: { _controller: ElephantWebsiteBundle:Default:index }
+
+elephant_website_about:
+    path:     /about
+    defaults: { _controller: ElephantWebsiteBundle:Default:about }

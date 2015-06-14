@@ -1,0 +1,7 @@
+parameters:
+#   elephant_website.example.class: Elephant\WebsiteBundle\Example
+
+services:
+#    elephant_website.example:
+#        class: %elephant_website.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

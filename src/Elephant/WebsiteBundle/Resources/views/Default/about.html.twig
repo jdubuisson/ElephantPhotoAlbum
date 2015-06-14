@@ -1,0 +1,22 @@
+{% extends 'ElephantWebsiteBundle::layout.html.twig' %}
+
+
+{% block container %}
+    <div class="container">
+
+    <div class="col-sm-8 col-md-offset-2 text-center">
+        <h1>{{ 'elephant.about.title' | trans }}</h1>
+    </div>
+        <div class="col-sm-6">
+        </div>
+
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading"><a href="https://github.com/jdubuisson/ElephantPhotoAlbum">GitHub</a></div>
+                <div class="panel-body">
+                    {{ 'elephant.about.github'| trans }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
