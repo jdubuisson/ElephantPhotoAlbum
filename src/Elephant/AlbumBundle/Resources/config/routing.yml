@@ -1,0 +1,7 @@
+album:
+    resource: "@ElephantAlbumBundle/Controller/AlbumController.php"
+    type:     annotation
+
+photo:
+    resource: "@ElephantAlbumBundle/Controller/PhotoController.php"
+    type:     annotation

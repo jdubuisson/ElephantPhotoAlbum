@@ -1,0 +1,8 @@
+parameters:
+#    elephant_album.example.class: Elephant\AlbumBundle\Example
+
+services:
+    elephant_album_bundle.image_type_extension:
+        class: Elephant\AlbumBundle\Form\Extension\ImageTypeExtension
+        tags:
+            - { name: form.type_extension, alias: file }

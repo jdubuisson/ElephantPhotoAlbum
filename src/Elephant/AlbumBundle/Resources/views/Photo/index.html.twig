@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block container %}
+    <div class="container">
+        <div class="col-sm-8 col-md-offset-2 text-center">
+            <h1>{{ 'elephant.photo.mine' | trans }}</h1>
+            {% for entity in entities %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="{{ path('photo_show', { 'id': entity.id }) }}" class="btn btn-primary btn-block">
+                            {{ entity.title }}
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <p>{{ entity.description }}</p>
+                        <img src="{{ entity.webPath }}" class="img-responsive center-block" alt="{{ entity.title }}">
+                    </div>
+                    <div class="panel-footer">
+                        <a href="{{ path('photo_edit', { 'id': entity.id }) }}" class="btn btn-default btn-block">
+                            {{ 'elephant.photo.edit' | trans }}
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <a class="btn btn-info" href="{{ path('photo_new') }}">
+                {{ 'elephant.photo.create' }}
+            </a>
+        </div>
+    </div>
+{% endblock %}
+

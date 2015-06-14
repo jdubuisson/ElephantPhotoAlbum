@@ -1,0 +1,68 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme edit_form _self %}
+
+{% block file_widget %}
+    {% spaceless %}
+
+        {{ block('form_widget') }}
+        {% if image_url is not null %}
+            <img src="{{ asset(image_url) }}" class="img-responsive center-block img-thumbnail" alt="preview">
+        {% endif %}
+
+    {% endspaceless %}
+{% endblock %}
+
+{% block container %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-md-offset-2 text-center">
+                <h1>{{ 'elephant.album.edit' | trans }}</h1>
+            </div>
+        </div>
+        <div class="row">
+
+            {{ form_start(edit_form) }}
+            {{ form_errors(edit_form) }}
+
+            {{ form_row(edit_form.title) }}
+            {{ form_row(edit_form.description) }}
+
+            <div class="row photos">
+                <div class="col-sm-8 col-md-offset-2 text-center">
+                    {{ form_row(edit_form.photos) }}
+                    {{ form_rest(edit_form) }}
+                    {{ form_end(edit_form) }}
+                </div>
+            </div>
+        </div>
+        <div class="row delete">
+            <div class="col-sm-8 col-md-offset-2 text-center">
+                {{ form(delete_form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body_end %}
+    <script type="text/javascript">
+        function addTagForm(collectionHolder, newLinkBtn) {
+            var prototype = collectionHolder.attr('data-prototype');
+
+            // Remplace '__name__' dans le HTML du prototype par un nombre basé sur
+            // la longueur de la collection courante
+            var newForm = prototype.replace(/__name__label__/g, collectionHolder.children().length);
+            newForm = newForm.replace(/__name__/g, collectionHolder.children().length);
+            collectionHolder.append(newForm);
+        }
+
+        $(document).ready(function () {
+            var newLinkBtn = $('.photos .form-group label a');
+            var collectionHolder = $(newLinkBtn.attr('data-collection-add-btn'));
+            newLinkBtn.on('click', function (e) {
+                e.preventDefault();
+                addTagForm(collectionHolder, newLinkBtn);
+            });
+        });
+    </script>
+{% endblock body_end %}

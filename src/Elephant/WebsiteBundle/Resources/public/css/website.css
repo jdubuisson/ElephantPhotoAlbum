@@ -1,0 +1,8 @@
+.row.album {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.form-group .img-thumbnail {
+    max-height: 200px;
+}

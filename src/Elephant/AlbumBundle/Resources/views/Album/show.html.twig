@@ -1,0 +1,51 @@
+{% extends '::base.html.twig' %}
+
+{% block container %}
+
+    <div id="fullpage">
+        {% for photo in entity.photos %}
+            <div class="section">
+                <div class="container">
+                    <div class="row album">
+                        <div class="col-md-9">
+                            <img src="{{ photo.webPath }}" class="img-responsive center-block" alt="{{ photo.title }}">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    {{ photo.title }}
+                                </div>
+                                <div class="panel-body">
+                                    {{ photo.description }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{{ path('album') }}">
+        Back to the list
+    </a>
+
+    <ul>
+        <li>
+            <a href="{{ path('album_edit', { 'id': entity.id }) }}">
+                Edit
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+{% endblock %}
+
+{% block body_end %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#fullpage').fullpage({
+                navigation: true
+            });
+        });
+    </script>
+{% endblock body_end %}

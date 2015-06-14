@@ -143,3 +143,9 @@ hwi_oauth:
 
 mopa_bootstrap:
     form: true
+
+stof_doctrine_extensions:
+    default_locale: fr_FR
+    orm:
+        default:
+            timestampable: true

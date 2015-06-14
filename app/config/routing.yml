@@ -1,3 +1,7 @@
+elephant_album:
+    resource: "@ElephantAlbumBundle/Resources/config/routing.yml"
+    prefix:   /
+
 elephant_user:
     resource: "@ElephantUserBundle/Resources/config/routing.yml"
     prefix:   /

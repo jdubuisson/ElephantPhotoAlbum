@@ -28,10 +28,11 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 
             new Elephant\UserBundle\ElephantUserBundle(),
             new Elephant\WebsiteBundle\ElephantWebsiteBundle(),
-
+            new Elephant\AlbumBundle\ElephantAlbumBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -4,6 +4,7 @@ namespace Elephant\UserBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Elephant\AlbumBundle\Entity\Album as Album;
 
 /**
  * @ORM\Entity
@@ -21,56 +22,23 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="github_id", type="string", nullable=true)
-     */
-    private $githubID;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="google_id", type="string", nullable=true)
      */
     private $googleID;
 
-
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
+    /**
+     * @ORM\OneToMany(targetEntity="Elephant\AlbumBundle\Entity\Album", mappedBy="author", cascade={"persist", "remove"})
+     **/
+    private $albums;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
-    }
-
-
-    /**
-     * Set githubID
-     *
-     * @param string $githubID
-     * @return User
-     */
-    public function setGithubID($githubID)
-    {
-        $this->githubID = $githubID;
-    
-        return $this;
-    }
-
-    /**
-     * Get githubID
-     *
-     * @return string 
-     */
-    public function getGithubID()
-    {
-        return $this->githubID;
     }
 
     /**
@@ -94,5 +62,41 @@ class User extends BaseUser
     public function getGoogleID()
     {
         return $this->googleID;
+    }
+
+    /**
+     * Get albums
+     *
+     * @return Collection
+     */
+    public function getAlbums()
+    {
+        return $this->albums;
+    }
+
+    /**
+     * add album
+     *
+     * @param Album $album
+     * @return User
+     */
+    public function addAlbum(Album $album)
+    {
+        $this->albums->add($album);
+
+        return $this;
+    }
+
+    /**
+     * Set albums
+     *
+     * @param Collection $albums
+     * @return User
+     */
+    public function setAlbums($albums)
+    {
+        $this->albums = $albums;
+
+        return $this;
     }
 }
