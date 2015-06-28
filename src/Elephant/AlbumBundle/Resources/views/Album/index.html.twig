@@ -1,30 +1,35 @@
 {% extends '::base.html.twig' %}
 
 {% block container %}
-<div class="container">
-    <div class="col-sm-8 col-md-offset-2 text-center">
-        <h1>{{ 'elephant.album.mine' | trans }}</h1>
-        {% for entity in entities %}
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a href="{{ path('album_show', { 'id': entity.id }) }}" class="btn btn-primary btn-block">
-                    {{ entity.title }}
-                    </a>
+    <div class="container text-center">
+            <h1>{{ 'elephant.album.mine' | trans }}</h1>
+            {% for entity in entities %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {{ entity.title }}
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <p>{{ entity.description }}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="{{ path('album_show', { 'id': entity.id }) }}"
+                                   class="btn btn-primary btn-block">
+                                    {{ 'elephant.album.show' | trans }}
+                                </a>
+                                <a href="{{ path('album_edit', { 'id': entity.id }) }}"
+                                   class="btn btn-default btn-block">
+                                    {{ 'elephant.album.edit' | trans }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <p>{{ entity.description }}</p>
-                </div>
-                <div class="panel-footer">
-                    <a href="{{ path('album_edit', { 'id': entity.id }) }}" class="btn btn-default btn-block">
-                        {{ 'elephant.album.edit' | trans }}
-                    </a>
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
 
-        <a class="btn btn-info" href="{{ path('album_new') }}">
-            {{ 'elephant.album.create' }}
-        </a>
+            <a class="btn btn-info" href="{{ path('album_new') }}">
+                {{ 'elephant.album.create' }}
+            </a>
     </div>
-</div>
 {% endblock %}

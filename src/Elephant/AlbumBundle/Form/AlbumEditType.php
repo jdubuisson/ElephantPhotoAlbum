@@ -21,7 +21,9 @@ class AlbumEditType extends AlbumType
             array(
                 'type' => new PhotoType(),
                 'allow_add' => true,
-                'by_reference' => false,)
+                'by_reference' => false,
+                'options' => array('label' => false),
+                )
         );
     }
 
