@@ -47,12 +47,13 @@
         }
 
         $(document).ready(function () {
-            console.log('h');
             $('#fullpage').fullpage({
                 navigation: true,
                 scrollOverflow: true,
-                afterResize: resizeImages(),
                 afterRender: resizeImages(),
+                afterResize: function(){
+                    resizeImages();
+                }
             });
 
         });
