@@ -1,15 +1,3 @@
-{% extends '::base.html.twig' %}
+{% extends 'ElephantAlbumBundle:Album:form.html.twig' %}
 
-{% block container %}
-    <h1>Album creation</h1>
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('album') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
-{% endblock %}
+{% block form_h1 %}{{ 'elephant.album.create' | trans }}{% endblock %}

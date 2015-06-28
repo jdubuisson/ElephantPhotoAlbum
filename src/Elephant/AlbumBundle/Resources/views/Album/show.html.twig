@@ -24,20 +24,19 @@
                 </div>
             </div>
         {% endfor %}
-    </div>
 
-    <a href="{{ path('album') }}">
-        Back to the list
-    </a>
+        <div class="section">
 
-    <ul>
-        <li>
-            <a href="{{ path('album_edit', { 'id': entity.id }) }}">
-                Edit
+            <a class="btn btn-default" href="{{ path('album') }}">
+                {{ 'elephant.album.list' | trans }}
             </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
+            <a class="btn btn-default" href="{{ path('album_edit', { 'id': entity.id }) }}">
+                {{ 'elephant.album.edit' | trans }}
+            </a>
+            {{ form(delete_form) }}
+
+        </div>
+    </div>
 {% endblock %}
 
 {% block body_end %}

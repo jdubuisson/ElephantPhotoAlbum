@@ -17,7 +17,11 @@ class PhotoType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('file', 'file', array('required' => false,'image_path' => 'webPath'))
+            ->add('file', 'file', array(
+                'widget_form_control_class' => '',
+                'required' => false,
+                'image_path' => 'webPath'
+            ))
         ;
     }
     

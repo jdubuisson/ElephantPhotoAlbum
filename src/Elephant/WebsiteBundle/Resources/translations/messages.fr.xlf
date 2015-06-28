@@ -4,7 +4,7 @@
     <body>
       <trans-unit id="269bdf551ded477b5a661d2233fc3787" resname="elephant.about.title">
         <source>elephant.about.title</source>
-        <target>Infos</target>
+        <target>A propos</target>
       </trans-unit>
       <trans-unit id="2538bdbb1cfa9fe857ab6b3e5986307f" resname="elephant.about.github">
         <source>elephant.about.github</source>

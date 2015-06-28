@@ -6,3 +6,16 @@
 .form-group .img-thumbnail {
     max-height: 200px;
 }
+
+.masonry{
+    -moz-column-width: 15em;
+    -webkit-column-width: 10em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap:1em;
+}
+
+.item {
+    display: inline-block;
+    padding:  .25rem;
+    width:  100%;
+}

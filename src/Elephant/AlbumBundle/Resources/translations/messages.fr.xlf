@@ -1,8 +1,35 @@
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" datatype="plaintext" original="file.ext">
-        <body>
-
-        </body>
-    </file>
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="70518c1d3207bd2da4e51d8ac1f3a522" resname="elephant.album.edit">
+        <source>elephant.album.edit</source>
+        <target>Modifier cet album</target>
+      </trans-unit>
+      <trans-unit id="5bfc21b98282af2e458e4019d58b0190" resname="elephant.photo.add">
+        <source>elephant.photo.add</source>
+        <target>Ajouter une photo</target>
+      </trans-unit>
+      <trans-unit id="ee02e9fb5c873cfb1fb371e8b72cbe4b" resname="elephant.album.mine">
+        <source>elephant.album.mine</source>
+        <target>Mes albums</target>
+      </trans-unit>
+      <trans-unit id="9e5eac9743ed5fd86c0fb56685fcc8aa" resname="elephant.album.show">
+        <source>elephant.album.show</source>
+        <target>Voir cet album</target>
+      </trans-unit>
+      <trans-unit id="107cd32a88a82104897afea748754624" resname="elephant.photo.mine">
+        <source>elephant.photo.mine</source>
+        <target>Mes photos</target>
+      </trans-unit>
+      <trans-unit id="d2f794ca01c5c6792eb13d418f7fe4ec" resname="elephant.photo.edit">
+        <source>elephant.photo.edit</source>
+        <target>Modifier cette photo</target>
+      </trans-unit>
+      <trans-unit id="690ad03a7e4a2b80713f98a851858968" resname="elephant.album.create">
+        <source>elephant.album.create</source>
+        <target>Créer un nouvel album</target>
+      </trans-unit>
+    </body>
+  </file>
 </xliff>

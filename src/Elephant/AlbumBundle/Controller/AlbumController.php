@@ -2,6 +2,7 @@
 
 namespace Elephant\AlbumBundle\Controller;
 
+use Elephant\AlbumBundle\Entity\Photo;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -10,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Elephant\AlbumBundle\Entity\Album;
 use Elephant\AlbumBundle\Form\AlbumType;
 use Elephant\AlbumBundle\Form\AlbumEditType;
+use Symfony\Component\Validator\Constraints\Collection;
 
 /**
  * Album controller.
@@ -53,6 +55,9 @@ class AlbumController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity->setAuthor($this->getUser());
+            foreach ($form->getData()->getPhotos() as $photo) {
+                $photo->setAlbum($form->getData());
+            }
             $em->persist($entity);
             $em->flush();
 
@@ -74,7 +79,7 @@ class AlbumController extends Controller
      */
     private function createCreateForm(Album $entity)
     {
-        $form = $this->createForm(new AlbumType(), $entity, array(
+        $form = $this->createForm(new AlbumEditType(), $entity, array(
             'action' => $this->generateUrl('album_create'),
             'method' => 'POST',
         ));
@@ -94,11 +99,12 @@ class AlbumController extends Controller
     public function newAction()
     {
         $entity = new Album();
+        $entity->addPhoto(new Photo());
         $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form' => $form->createView(),
+            'edit_form' => $form->createView(),
         );
     }
 

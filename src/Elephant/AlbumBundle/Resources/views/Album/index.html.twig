@@ -5,15 +5,22 @@
             <h1>{{ 'elephant.album.mine' | trans }}</h1>
             {% for entity in entities %}
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        {{ entity.title }}
+                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse-{{ loop.index}}">
+                        {{ entity.title }} <span class="caret"></span>
                     </div>
-                    <div class="panel-body">
+                    <div id="collapse-{{ loop.index }}" class="panel-body collapse in">
                         <div class="row">
-                            <div class="col-md-9">
-                                <p>{{ entity.description }}</p>
+                            <div class="col-md-9 hidden-xs">
+                                <div class="masonry">
+                                {% for photo in entity.photos|slice(0,6) %}
+                                <div class="item">
+                                    <img src="{{ photo.webPath }}" class="img-responsive center-block" alt="{{ photo.title }}">
+                                </div>
+                                {% endfor %}
+                                </div>
                             </div>
                             <div class="col-md-3">
+                                <p>{{ entity.description }}</p>
                                 <a href="{{ path('album_show', { 'id': entity.id }) }}"
                                    class="btn btn-primary btn-block">
                                     {{ 'elephant.album.show' | trans }}
@@ -22,6 +29,10 @@
                                    class="btn btn-default btn-block">
                                     {{ 'elephant.album.edit' | trans }}
                                 </a>
+                                <a href="{{ path('album_delete', { 'id': entity.id }) }}"
+                                   class="btn btn-default btn-block">
+                                    {{ 'elephant.album.delete' | trans }}
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -29,7 +40,7 @@
             {% endfor %}
 
             <a class="btn btn-info" href="{{ path('album_new') }}">
-                {{ 'elephant.album.create' }}
+                {{ 'elephant.album.create' | trans }}
             </a>
     </div>
 {% endblock %}

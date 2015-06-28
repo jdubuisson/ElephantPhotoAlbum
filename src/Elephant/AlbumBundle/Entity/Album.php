@@ -2,6 +2,7 @@
 
 namespace Elephant\AlbumBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Elephant\UserBundle\Entity\User as User;
@@ -60,6 +61,10 @@ class Album
      **/
     private $photos;
 
+    public function __construct()
+    {
+        $this->setPhotos(new ArrayCollection());
+    }
     /**
      * Get id
      *
