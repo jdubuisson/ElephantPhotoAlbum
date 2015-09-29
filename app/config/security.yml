@@ -35,7 +35,7 @@ security:
                 failure_path: /connect
                 login_path: /connect
                 check_path: /connect
-                default_target_path: /profile
+                default_target_path: /
                 provider: fos_userbundle
                 resource_owners:
                     #github:           "/login/check-github"
@@ -50,7 +50,7 @@ security:
                 csrf_provider: form.csrf_provider
                 check_path: /login_check
                 login_path: /login
-                default_target_path: /profile
+                default_target_path: /
 
             anonymous:    true
             logout:

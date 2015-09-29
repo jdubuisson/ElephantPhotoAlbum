@@ -39,7 +39,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ ElephantWebsiteBundle ]
+    bundles:        [ ElephantWebsiteBundle, HWIOAuthBundle ]
     #java: /usr/bin/java
     filters:
         less:
