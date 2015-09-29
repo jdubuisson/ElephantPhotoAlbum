@@ -1,0 +1,79 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme share_form _self %}
+
+{% block file_widget %}
+    {% spaceless %}
+
+        {{ block('form_widget') }}
+        {% if image_url is not null %}
+            <img src="{{ asset(image_url) }}" class="img-responsive center-block img-thumbnail" alt="preview">
+        {% endif %}
+
+    {% endspaceless %}
+{% endblock %}
+
+{% block container %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-md-offset-2 text-center">
+                <h1>{{ 'elephant.album.share' | trans }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+
+                {{ form_start(share_form) }}
+                {{ form_errors(share_form) }}
+
+                {{ form_row(share_form.title) }}
+                {{ form_row(share_form.description) }}
+
+                <div id="prototype_holder" class="row shares"
+                     data-prototype="
+                    {% filter escape %}
+                        {{ include('ElephantAlbumBundle:Share:prototype.html.twig', { 'form': share_form.shares.vars.prototype }) }}
+                    {% endfilter %}">
+                    <div class="col-sm-12 text-center">
+                        <div class="form-group collection-items elephant_albumbundle_album_edit_shares_form_group"
+                             data-prototype-name="__name__" data-prototype-label="__name__label__"
+                             id="collectionelephant_albumbundle_album_edit_shares_form_group">
+                            {% for shareForm in share_form.shares %}
+                                {{ include('ElephantAlbumBundle:Share:prototype.html.twig', { 'form': shareForm }) }}
+                            {% endfor %}
+                        </div>
+                        <button type="submit" class="btn btn-default add-collection"
+                                data-collection-add-btn=".elephant_albumbundle_album_edit_shares_form_group"
+                                >{{ 'elephant.share.add' | trans }}</button>
+                        {{ form_rest(share_form) }}
+                        {{ form_end(share_form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body_end %}
+    <script type="text/javascript">
+        function addTagForm(collectionHolder, newLinkBtn) {
+            var prototype = $('#prototype_holder').attr('data-prototype');
+
+            // Remplace '__name__' dans le HTML du prototype par un nombre basé sur
+            // la longueur de la collection courante
+            var newForm = prototype.replace(/__name__label__/g, collectionHolder.children().length);
+            newForm = newForm.replace(/__name__/g, collectionHolder.children().length);
+            collectionHolder.append(newForm);
+        }
+
+        $(document).ready(function () {
+            var newLinkBtn = $('.add-collection');
+            var collectionHolder = $(newLinkBtn.attr('data-collection-add-btn'));
+            newLinkBtn.on('click', function (e) {
+                e.preventDefault();
+                addTagForm(collectionHolder, newLinkBtn);
+            });
+        });
+    </script>
+{% endblock body_end %}
+

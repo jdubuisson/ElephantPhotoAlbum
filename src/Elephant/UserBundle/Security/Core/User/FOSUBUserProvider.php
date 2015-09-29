@@ -19,9 +19,9 @@ class FOSUBUserProvider extends BaseClass
         //on connect - get the access token and the user ID
         $service = $response->getResourceOwner()->getName();
 
-        $setter = 'set'.ucfirst($service);
-        $setter_id = $setter.'Id';
-        $setter_token = $setter.'AccessToken';
+        $setter = 'set' . ucfirst($service);
+        $setter_id = $setter . 'Id';
+        $setter_token = $setter . 'AccessToken';
 
         //we "disconnect" previously connected users
         if (null !== $previousUser = $this->userManager->findUserBy(array($property => $username))) {
@@ -44,12 +44,12 @@ class FOSUBUserProvider extends BaseClass
     {
         $username = $response->getUsername();
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
-        //when the user is registering
 
         if (null === $user) {
+            //when the user is registering
             $service = $response->getResourceOwner()->getName();
-            $setter = 'set'.ucfirst($service);
-            $setter_id = $setter.'Id';
+            $setter = 'set' . ucfirst($service);
+            $setter_id = $setter . 'Id';
             // create new user here
             $user = $this->userManager->createUser();
             $user->$setter_id($username);
@@ -61,11 +61,10 @@ class FOSUBUserProvider extends BaseClass
             $user->setPassword($username);
             $user->setEnabled(true);
             $this->userManager->updateUser($user);
-            return $user;
+        } else {
+            //if user exists - go with the HWIOAuth way
+            $user = parent::loadUserByOAuthUserResponse($response);
         }
-
-        //if user exists - go with the HWIOAuth way
-        $user = parent::loadUserByOAuthUserResponse($response);
 
         return $user;
     }

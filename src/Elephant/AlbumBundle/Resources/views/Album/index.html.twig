@@ -2,7 +2,7 @@
 
 {% block container %}
     <div class="container text-center">
-            <h1>{{ 'elephant.album.mine' | trans }}</h1>
+            {% block page_h1 %}<h1>{{ 'elephant.album.mine' | trans }}</h1>{% endblock page_h1 %}
             {% for entity in entities %}
                 <div class="panel panel-default">
                     <div class="panel-heading" data-toggle="collapse" data-target="#collapse-{{ loop.index}}">
@@ -25,22 +25,30 @@
                                    class="btn btn-primary btn-block">
                                     {{ 'elephant.album.show' | trans }}
                                 </a>
+                                {% if entity.author == app.user %}
                                 <a href="{{ path('album_edit', { 'id': entity.id }) }}"
                                    class="btn btn-default btn-block">
                                     {{ 'elephant.album.edit' | trans }}
+                                </a>
+                                <a href="{{ path('album_share', { 'id': entity.id }) }}"
+                                   class="btn btn-default btn-block">
+                                    {{ 'elephant.album.share' | trans }}
                                 </a>
                                 <a href="{{ path('album_delete', { 'id': entity.id }) }}"
                                    class="btn btn-default btn-block">
                                     {{ 'elephant.album.delete' | trans }}
                                 </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
             {% endfor %}
 
+        {% block createAlbums %}
             <a class="btn btn-info" href="{{ path('album_new') }}">
                 {{ 'elephant.album.create' | trans }}
             </a>
+        {% endblock createAlbums %}
     </div>
 {% endblock %}

@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Elephant\AlbumBundle\Entity\Album;
 use Elephant\AlbumBundle\Form\AlbumType;
 use Elephant\AlbumBundle\Form\AlbumEditType;
+use Elephant\AlbumBundle\Form\AlbumShareType;
 use Symfony\Component\Validator\Constraints\Collection;
 
 /**
@@ -121,6 +122,12 @@ class AlbumController extends Controller
 
         $entity = $em->getRepository('ElephantAlbumBundle:Album')->find($id);
 
+        if($entity->getAuthor() != $this->getUser() && !$this->getUser()->getSharedAlbums()->contains($entity))
+        {
+            $this->addFlash('error','elephant.error.not_allowed');
+            return $this->redirect($this->generateUrl('elephant_website_homepage'));
+        }
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Album entity.');
         }
@@ -148,6 +155,11 @@ class AlbumController extends Controller
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Album entity.');
+        }
+        if($entity->getAuthor() != $this->getUser())
+        {
+            $this->addFlash('error','elephant.error.not_allowed');
+            return $this->redirect($this->generateUrl('elephant_website_homepage'));
         }
 
         $editForm = $this->createEditForm($entity);
@@ -194,6 +206,10 @@ class AlbumController extends Controller
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Album entity.');
+        }
+        if($entity->getAuthor() != $this->getUser())
+        {
+            throw $this->createNotFoundException('You are not allowed to edit this album');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -256,5 +272,84 @@ class AlbumController extends Controller
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm();
+    }
+
+    /**
+     * Displays a form to share an existing Album entity.
+     *
+     * @Route("/{id}/share", name="album_share")
+     * @Method("GET")
+     * @Template()
+     */
+    public function shareAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('ElephantAlbumBundle:Album')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Album entity.');
+        }
+
+        $shareForm = $this->createShareForm($entity);
+
+        return array(
+            'entity' => $entity,
+            'share_form' => $shareForm->createView()
+        );
+    }
+
+    /**
+     * Shares an existing Album entity.
+     *
+     * @Route("/{id}/share", name="album_update_share")
+     * @Method("PUT")
+     * @Template("ElephantAlbumBundle:Album:share.html.twig")
+     */
+    public function updateShareAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('ElephantAlbumBundle:Album')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Album entity.');
+        }
+
+        $shareForm = $this->createShareForm($entity);
+        $shareForm->handleRequest($request);
+
+        if ($shareForm->isValid()) {
+            foreach ($shareForm->getData()->getShares() as $share) {
+                $share->setAlbum($shareForm->getData());
+            }
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('album_share', array('id' => $id)));
+        }
+
+        return array(
+            'entity' => $entity,
+            'edit_form' => $shareForm->createView()
+        );
+    }
+
+    /**
+     * Creates a form to share a Album entity.
+     *
+     * @param Album $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createShareForm(Album $entity)
+    {
+        $form = $this->createForm(new AlbumShareType(), $entity, array(
+            'action' => $this->generateUrl('album_update_share', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Submit'));
+
+        return $form;
     }
 }

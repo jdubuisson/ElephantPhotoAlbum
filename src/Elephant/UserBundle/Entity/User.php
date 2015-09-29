@@ -32,6 +32,11 @@ class User extends BaseUser
     private $albums;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Elephant\AlbumBundle\Entity\Album", cascade={"persist", "remove"})
+     **/
+    private $sharedAlbums;
+
+    /**
      * Get id
      *
      * @return integer
@@ -82,8 +87,9 @@ class User extends BaseUser
      */
     public function addAlbum(Album $album)
     {
-        $this->albums->add($album);
-
+        if(!$this->albums->contains($album)) {
+            $this->albums->add($album);
+        }
         return $this;
     }
 
@@ -96,6 +102,44 @@ class User extends BaseUser
     public function setAlbums($albums)
     {
         $this->albums = $albums;
+
+        return $this;
+    }
+
+    /**
+     * Get sharedAlbums
+     *
+     * @return Collection
+     */
+    public function getSharedAlbums()
+    {
+        return $this->sharedAlbums;
+    }
+
+    /**
+     * add sharedAlbum
+     *
+     * @param Album $sharedAlbum
+     * @return User
+     */
+    public function addSharedAlbum(Album $sharedAlbum)
+    {
+        if(!$this->sharedAlbums->contains($sharedAlbum)) {
+            $this->sharedAlbums->add($sharedAlbum);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set sharedAlbums
+     *
+     * @param Collection $sharedAlbums
+     * @return User
+     */
+    public function setSharedAlbums($sharedAlbums)
+    {
+        $this->sharedAlbums = $sharedAlbums;
 
         return $this;
     }

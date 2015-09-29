@@ -61,6 +61,11 @@ class Album
      **/
     private $photos;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Share", mappedBy="album", cascade={"persist", "remove"})
+     **/
+    private $shares;
+
     public function __construct()
     {
         $this->setPhotos(new ArrayCollection());
@@ -239,6 +244,56 @@ class Album
 
         return $this;
     }
+
+    /**
+     * Get shares
+     *
+     * @return Collection
+     */
+    public function getShares()
+    {
+        return $this->shares;
+    }
+
+    /**
+     * add shares
+     *
+     * @param Share $share
+     * @return Album
+     */
+    public function addShare(Share $share)
+    {
+        $this->shares->add($share);
+
+        return $this;
+    }
+
+    /**
+     * remove shares
+     *
+     * @param Share $share
+     * @return Album
+     */
+    public function removeShare(Share $share)
+    {
+        $this->shares->remove($share);
+
+        return $this;
+    }
+
+    /**
+     * Set shares
+     *
+     * @param Collection $shares
+     * @return Album
+     */
+    public function setShares($shares)
+    {
+        $this->shares = $shares;
+
+        return $this;
+    }
+
 
     /**
      * toString method

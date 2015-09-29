@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" datatype="plaintext" original="file.ext">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
     <body>
       <trans-unit id="70518c1d3207bd2da4e51d8ac1f3a522" resname="elephant.album.edit">
         <source>elephant.album.edit</source>
@@ -37,6 +37,14 @@
       <trans-unit id="5d4824dccec85f83510d3a1bcbee12eb" resname="elephant.album.delete">
         <source>elephant.album.delete</source>
         <target>Delete this album</target>
+      </trans-unit>
+      <trans-unit id="7c564540495f6b26f10b0fa61d7448c4" resname="elephant.album.share">
+        <source>elephant.album.share</source>
+        <target>Share this album</target>
+      </trans-unit>
+      <trans-unit id="e1fa894a38e1ddb66a27b721d0f33a7e" resname="elephant.share.add">
+        <source>elephant.share.add</source>
+        <target>Add an email to share this album with</target>
       </trans-unit>
     </body>
   </file>

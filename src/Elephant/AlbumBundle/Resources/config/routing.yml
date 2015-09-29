@@ -5,3 +5,7 @@ album:
 photo:
     resource: "@ElephantAlbumBundle/Controller/PhotoController.php"
     type:     annotation
+
+shared_album:
+    resource: "@ElephantAlbumBundle/Controller/SharedAlbumController.php"
+    type:     annotation

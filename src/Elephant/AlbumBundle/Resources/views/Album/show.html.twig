@@ -27,13 +27,19 @@
 
         <div class="section">
 
-            <a class="btn btn-default" href="{{ path('album') }}">
-                {{ 'elephant.album.list' | trans }}
-            </a>
-            <a class="btn btn-default" href="{{ path('album_edit', { 'id': entity.id }) }}">
-                {{ 'elephant.album.edit' | trans }}
-            </a>
-            {{ form(delete_form) }}
+            {% if entity.author == app.user %}
+                <a class="btn btn-default" href="{{ path('album') }}">
+                    {{ 'elephant.album.list' | trans }}
+                </a>
+                <a class="btn btn-default" href="{{ path('album_edit', { 'id': entity.id }) }}">
+                    {{ 'elephant.album.edit' | trans }}
+                </a>
+                {{ form(delete_form) }}
+            {% else %}
+                <a class="btn btn-default" href="{{ path('shared_album') }}">
+                    {{ 'elephant.album.list' | trans }}
+                </a>
+            {% endif %}
 
         </div>
     </div>

@@ -5,6 +5,13 @@
     <div id="fullpage" class="home">
         <div class="section elephant-1 explanations">
             <div class="intro container rounded-img well">
+                {% for flashMessage in app.session.flashbag.get('error') %}
+                <div class="row">
+                    <div class="alert alert-danger" role="alert">
+                        {{ flashMessage | trans() }}
+                    </div>
+                </div>
+                {% endfor %}
                 <div class="row">
                     <div class="col-md-8 text-center col-md-offset-2">
                         <h1>qzergegzr</h1>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" datatype="plaintext" original="file.ext">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
     <body>
       <trans-unit id="2538bdbb1cfa9fe857ab6b3e5986307f" resname="elephant.about.github">
         <source>elephant.about.github</source>
@@ -9,6 +9,18 @@
       <trans-unit id="269bdf551ded477b5a661d2233fc3787" resname="elephant.about.title">
         <source>elephant.about.title</source>
         <target>About</target>
+      </trans-unit>
+      <trans-unit id="f9785e107cf781583a2a17a1e44d96c5" resname="elephant.error.not_allowed">
+        <source>elephant.error.not_allowed</source>
+        <target>You are not allowed to perfom this operation.</target>
+      </trans-unit>
+      <trans-unit id="ee02e9fb5c873cfb1fb371e8b72cbe4b" resname="elephant.album.mine">
+        <source>elephant.album.mine</source>
+        <target>My Albums</target>
+      </trans-unit>
+      <trans-unit id="c71dddd6794e5c2a2c613b7b373e2847" resname="elephant.album.shared">
+        <source>elephant.album.shared</source>
+        <target>Albums shared with me</target>
       </trans-unit>
     </body>
   </file>
