@@ -1,3 +1,7 @@
+my_album:
+    resource: "@ElephantAlbumBundle/Controller/MyAlbumController.php"
+    type:     annotation
+
 album:
     resource: "@ElephantAlbumBundle/Controller/AlbumController.php"
     type:     annotation

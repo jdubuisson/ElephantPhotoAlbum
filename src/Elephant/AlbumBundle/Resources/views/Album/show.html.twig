@@ -26,21 +26,31 @@
         {% endfor %}
 
         <div class="section">
-
-            {% if entity.author == app.user %}
-                <a class="btn btn-default" href="{{ path('album') }}">
-                    {{ 'elephant.album.list' | trans }}
-                </a>
-                <a class="btn btn-default" href="{{ path('album_edit', { 'id': entity.id }) }}">
-                    {{ 'elephant.album.edit' | trans }}
-                </a>
-                {{ form(delete_form) }}
-            {% else %}
-                <a class="btn btn-default" href="{{ path('shared_album') }}">
-                    {{ 'elephant.album.list' | trans }}
-                </a>
-            {% endif %}
-
+            <div class="container">
+                <div class="row">
+                    {% if entity.author == app.user %}
+                        <div class="col-sm-8 col-md-offset-2 text-center">
+                            <a class="btn btn-default" href="{{ path('album') }}">
+                                {{ 'elephant.album.list' | trans }}
+                            </a>
+                            <a class="btn btn-default" href="{{ path('album_edit', { 'id': entity.id }) }}">
+                                {{ 'elephant.album.edit' | trans }}
+                            </a>
+                        </div>
+                        {% if delete_form is defined %}
+                            <div class="col-sm-1 text-center">
+                                {{ form(delete_form) }}
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="col-sm-8 col-md-offset-2 text-center">
+                            <a class="btn btn-default" href="{{ path('shared_album') }}">
+                                {{ 'elephant.album.list' | trans }}
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

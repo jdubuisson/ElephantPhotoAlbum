@@ -14,16 +14,17 @@
         <div id="navbar" class="navbar-collapse collapse">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ path('elephant_website_homepage') }}">Home</a></li>
-                    <li><a href="{{ path('album') }}">{{ 'elephant.album.mine' | trans }}</a></li>
+                    {% if is_granted("ROLE_CREATE") %}
+                        <li><a href="{{ path('album') }}">{{ 'elephant.album.mine' | trans }}</a></li>
+                    {% endif %}
                     <li><a href="{{ path('shared_album') }}">{{ 'elephant.album.shared' | trans }}</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ path('elephant_website_about') }}">About</a></li>
-     {#
-     <p class="navbar-text">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</p>
-     #}
+                    {#
+                    <p class="navbar-text">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</p>
+                    #}
                     <li>
                         <a href="{{ path('fos_user_security_logout') }}">
                             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
