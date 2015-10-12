@@ -72,5 +72,6 @@ security:
         - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/my-album, roles: ROLE_CREATE }
+        - { path: ^/photo, roles: ROLE_ADMIN }
         - { path: ^/, roles: ROLE_USER }
         - { path: ^/admin/, roles: ROLE_ADMIN }

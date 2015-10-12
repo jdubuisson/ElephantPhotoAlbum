@@ -156,7 +156,7 @@ class Photo
      */
     public function getWebPath()
     {
-        return null === $this->path ? null : '/elephant/web/'. $this->getUploadDir().'/'.$this->path;
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
     }
 
     /**

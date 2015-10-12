@@ -13,7 +13,7 @@
                     </div>
                     <div class="panel-body">
                         <p>{{ entity.description }}</p>
-                        <img src="{{ entity.webPath }}" class="img-responsive center-block" alt="{{ entity.title }}">
+                        <img src="{{ asset(entity.webPath) }}" class="img-responsive center-block" alt="{{ entity.title }}">
                     </div>
                     <div class="panel-footer">
                         <a href="{{ path('photo_edit', { 'id': entity.id }) }}" class="btn btn-default btn-block">
