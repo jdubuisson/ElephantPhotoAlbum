@@ -14,6 +14,58 @@
         <source>elephant.error.not_allowed</source>
         <target>Vous n'êtes pas authorisé à effectuer cette opération.</target>
       </trans-unit>
+      <trans-unit id="f8cbf43cbc458cd8bcfcf5f1ef965e1f" resname="elephant.home.what_is_it">
+        <source>elephant.home.what_is_it</source>
+        <target>Elephant, qu'est-ce que c'est ?</target>
+      </trans-unit>
+      <trans-unit id="99028ac05213fb42e407b336827a8db8" resname="elephant.home.goal">
+        <source>elephant.home.goal</source>
+        <target>Le but d'Elephant est de proposer une façon simple de partager ses photos, avec quelques explications. C'est votre compte Google qui vous permet de vous connecter.</target>
+      </trans-unit>
+      <trans-unit id="e40813c27f8504da352bf1c1f007e9ff" resname="elephant.home.scroll_swipe">
+        <source>elephant.home.scroll_swipe</source>
+        <target>Dans l'idée, un écran présente une photo. Essayez de faire défiler l'écran vers le bas.</target>
+      </trans-unit>
+      <trans-unit id="79392e8d69c65d900e36e8ac861599fa" resname="elephant.home.you_got_it">
+        <source>elephant.home.you_got_it</source>
+        <target>Vous avez tout saisi !</target>
+      </trans-unit>
+      <trans-unit id="9fd827faeaeaa4d407a38e18bbb641a7" resname="elephant.home.that_is_it">
+        <source>elephant.home.that_is_it</source>
+        <target>C'est tout ce dont vous avez besoin pour utiliser le site.</target>
+      </trans-unit>
+      <trans-unit id="ca818a9aaf676eefb44c7ccbaf7d55fc" resname="elephant.home.see_shared">
+        <source>elephant.home.see_shared</source>
+        <target>On vous a certainement déjà partagé un album photo : utilisez le menu !</target>
+      </trans-unit>
+      <trans-unit id="9f917539e6e6ddc1256115854e8abe51" resname="elephant.home.want_to_know_more">
+        <source>elephant.home.want_to_know_more</source>
+        <target>Vous voulez en savoir plus ?</target>
+      </trans-unit>
+      <trans-unit id="30964bc8533857afa449fa6190c71a6f" resname="elephant.home.hosting">
+        <source>elephant.home.hosting</source>
+        <target>Un autre avantage d'Elephant : vous savez où sont vos photos et qui y a accès.</target>
+      </trans-unit>
+      <trans-unit id="db6add9d8f8cb977645dacbb743d5d82" resname="elephant.home.adding_content">
+        <source>elephant.home.adding_content</source>
+        <target>Et pour le moment, seules certaines personnes peuvent créer de nouveaux albums.</target>
+      </trans-unit>
+      <trans-unit id="554546794f5fe7ce6d10815a6f67197f" resname="elephant.about.open_hosted_controlled">
+        <source>elephant.about.open_hosted_controlled</source>
+        <target>Elephant est une solution d'albums photo open-source et auto-hébergée. Tout ça pour vous donner le contrôle sur vos données.</target>
+      </trans-unit>
+      <trans-unit id="7d68cee6c9a5a2d3ad4af91bad516772" resname="elephant.about.sf2_bootstrap">
+        <source>elephant.about.sf2_bootstrap</source>
+        <target>Elephant est basé sur le framework PHP Symfony2. En plus, Bootstrap est le framework HTML, CSS et JS qui rend le site responsive.</target>
+      </trans-unit>
+      <trans-unit id="19c86f202dcb506929ce19e1a64d327c" resname="elephant.about.mission">
+        <source>elephant.about.mission</source>
+        <target>La mission d'Elephant</target>
+      </trans-unit>
+      <trans-unit id="bd74c4771f9bd0ba32dac8fd67c7ef9e" resname="elephant.about.tech_stuff">
+        <source>elephant.about.tech_stuff</source>
+        <target>Trucs techniques</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

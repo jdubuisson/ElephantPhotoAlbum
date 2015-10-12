@@ -14,6 +14,58 @@
         <source>elephant.error.not_allowed</source>
         <target>You are not allowed to perfom this operation.</target>
       </trans-unit>
+      <trans-unit id="f8cbf43cbc458cd8bcfcf5f1ef965e1f" resname="elephant.home.what_is_it">
+        <source>elephant.home.what_is_it</source>
+        <target>What is Elephant ?</target>
+      </trans-unit>
+      <trans-unit id="99028ac05213fb42e407b336827a8db8" resname="elephant.home.goal">
+        <source>elephant.home.goal</source>
+        <target>Elephant is a simple way to share your photos with a few explanations. You use your Google account to login.</target>
+      </trans-unit>
+      <trans-unit id="e40813c27f8504da352bf1c1f007e9ff" resname="elephant.home.scroll_swipe">
+        <source>elephant.home.scroll_swipe</source>
+        <target>The idea is that one screen is used for one picture. Try to scroll od swipe down.</target>
+      </trans-unit>
+      <trans-unit id="79392e8d69c65d900e36e8ac861599fa" resname="elephant.home.you_got_it">
+        <source>elephant.home.you_got_it</source>
+        <target>You got it !</target>
+      </trans-unit>
+      <trans-unit id="9fd827faeaeaa4d407a38e18bbb641a7" resname="elephant.home.that_is_it">
+        <source>elephant.home.that_is_it</source>
+        <target>That's all you need to know to use the website.</target>
+      </trans-unit>
+      <trans-unit id="ca818a9aaf676eefb44c7ccbaf7d55fc" resname="elephant.home.see_shared">
+        <source>elephant.home.see_shared</source>
+        <target>Someone likely shared a photo album with you : use the menu !</target>
+      </trans-unit>
+      <trans-unit id="9f917539e6e6ddc1256115854e8abe51" resname="elephant.home.want_to_know_more">
+        <source>elephant.home.want_to_know_more</source>
+        <target>Do you want to know more ?</target>
+      </trans-unit>
+      <trans-unit id="30964bc8533857afa449fa6190c71a6f" resname="elephant.home.hosting">
+        <source>elephant.home.hosting</source>
+        <target>Another upside of Elephant : you knwo where your photos are hosted and who can see them.</target>
+      </trans-unit>
+      <trans-unit id="db6add9d8f8cb977645dacbb743d5d82" resname="elephant.home.adding_content">
+        <source>elephant.home.adding_content</source>
+        <target>For now, only a few people can create new albums.</target>
+      </trans-unit>
+      <trans-unit id="554546794f5fe7ce6d10815a6f67197f" resname="elephant.about.open_hosted_controlled">
+        <source>elephant.about.open_hosted_controlled</source>
+        <target>Elephant is an open-source and self-hosted photo album solution. It is all about giving you control over your data.</target>
+      </trans-unit>
+      <trans-unit id="7d68cee6c9a5a2d3ad4af91bad516772" resname="elephant.about.sf2_bootstrap">
+        <source>elephant.about.sf2_bootstrap</source>
+        <target>This website is based on the Symfony2 framework. On top of that, Bootstrap is the HTML, CSS and JS framework that allows the website to be responsive.</target>
+      </trans-unit>
+      <trans-unit id="19c86f202dcb506929ce19e1a64d327c" resname="elephant.about.mission">
+        <source>elephant.about.mission</source>
+        <target>Elephant's mission</target>
+      </trans-unit>
+      <trans-unit id="bd74c4771f9bd0ba32dac8fd67c7ef9e" resname="elephant.about.tech_stuff">
+        <source>elephant.about.tech_stuff</source>
+        <target>Technical stuff</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
