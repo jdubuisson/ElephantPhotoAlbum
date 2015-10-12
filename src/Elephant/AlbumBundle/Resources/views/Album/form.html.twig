@@ -56,7 +56,7 @@
 
 {% block body_end %}
     <script type="text/javascript">
-        function addTagForm(collectionHolder, newLinkBtn) {
+        function addTagForm(collectionHolder) {
             var prototype = $('#prototype_holder').attr('data-prototype');
 
             // Remplace '__name__' dans le HTML du prototype par un nombre basé sur
@@ -71,7 +71,7 @@
             var collectionHolder = $(newLinkBtn.attr('data-collection-add-btn'));
             newLinkBtn.on('click', function (e) {
                 e.preventDefault();
-                addTagForm(collectionHolder, newLinkBtn);
+                addTagForm(collectionHolder);
             });
         });
     </script>
