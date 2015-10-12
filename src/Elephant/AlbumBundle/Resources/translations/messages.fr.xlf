@@ -46,6 +46,18 @@
         <source>elephant.share.add</source>
         <target>Ajouter un email avec qui partager cet album</target>
       </trans-unit>
+      <trans-unit id="825e71ece6861f81c9f9670344d389ab" resname="elephant.share.participants">
+        <source>elephant.share.participants</source>
+        <target>Cet album a été partagé avec ces personnes, et elles y ont déjà jeté un oeil</target>
+      </trans-unit>
+      <trans-unit id="5591e3c559a1abbd085b0c002aaff4b3" resname="elephant.share.no_participants">
+        <source>elephant.share.no_participants</source>
+        <target>personne :-(</target>
+      </trans-unit>
+      <trans-unit id="c71dddd6794e5c2a2c613b7b373e2847" resname="elephant.album.shared">
+        <source>elephant.album.shared</source>
+        <target>Albums partagés avec moi</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

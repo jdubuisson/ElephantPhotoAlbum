@@ -10,13 +10,9 @@
         <source>elephant.about.github</source>
         <target>Ce projet est disponible sur Github</target>
       </trans-unit>
-      <trans-unit id="ee02e9fb5c873cfb1fb371e8b72cbe4b" resname="elephant.album.mine">
-        <source>elephant.album.mine</source>
-        <target>Mes albums</target>
-      </trans-unit>
-      <trans-unit id="c71dddd6794e5c2a2c613b7b373e2847" resname="elephant.album.shared">
-        <source>elephant.album.shared</source>
-        <target>Albums partagés avec moi</target>
+      <trans-unit id="f9785e107cf781583a2a17a1e44d96c5" resname="elephant.error.not_allowed">
+        <source>elephant.error.not_allowed</source>
+        <target>Vous n'êtes pas authorisé à effectuer cette opération.</target>
       </trans-unit>
     </body>
   </file>

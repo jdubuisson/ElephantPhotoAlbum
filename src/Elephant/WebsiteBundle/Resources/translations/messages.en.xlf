@@ -14,14 +14,6 @@
         <source>elephant.error.not_allowed</source>
         <target>You are not allowed to perfom this operation.</target>
       </trans-unit>
-      <trans-unit id="ee02e9fb5c873cfb1fb371e8b72cbe4b" resname="elephant.album.mine">
-        <source>elephant.album.mine</source>
-        <target>My Albums</target>
-      </trans-unit>
-      <trans-unit id="c71dddd6794e5c2a2c613b7b373e2847" resname="elephant.album.shared">
-        <source>elephant.album.shared</source>
-        <target>Albums shared with me</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>
