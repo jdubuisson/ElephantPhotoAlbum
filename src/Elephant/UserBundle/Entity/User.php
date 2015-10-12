@@ -32,7 +32,7 @@ class User extends BaseUser
     private $albums;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Elephant\AlbumBundle\Entity\Album", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="Elephant\AlbumBundle\Entity\Album", inversedBy="participants", cascade={"persist", "remove"})
      **/
     private $sharedAlbums;
 

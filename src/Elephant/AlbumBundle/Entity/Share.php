@@ -26,7 +26,7 @@ class Share
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
 

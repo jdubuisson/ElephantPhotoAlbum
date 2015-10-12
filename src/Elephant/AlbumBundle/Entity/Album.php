@@ -62,9 +62,16 @@ class Album
     private $photos;
 
     /**
-     * @ORM\OneToMany(targetEntity="Share", mappedBy="album", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Elephant\AlbumBundle\Entity\Share", mappedBy="album", cascade={"persist", "remove"})
      **/
     private $shares;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Elephant\UserBundle\Entity\User", mappedBy="sharedAlbums")
+     **/
+    private $participants;
+
+
 
     public function __construct()
     {
@@ -290,6 +297,55 @@ class Album
     public function setShares($shares)
     {
         $this->shares = $shares;
+
+        return $this;
+    }
+
+    /**
+     * Get participants
+     *
+     * @return Collection
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
+    }
+
+    /**
+     * add participant
+     *
+     * @param User $participant
+     * @return Album
+     */
+    public function addParticipant(User $participant)
+    {
+        $this->participants->add($participant);
+
+        return $this;
+    }
+
+    /**
+     * remove participant
+     *
+     * @param User $participant
+     * @return Album
+     */
+    public function removeParticipant(User $participant)
+    {
+        $this->participants->remove($participant);
+
+        return $this;
+    }
+
+    /**
+     * Set participants
+     *
+     * @param Collection $participants
+     * @return Album
+     */
+    public function setParticipants($participants)
+    {
+        $this->participants = $participants;
 
         return $this;
     }
