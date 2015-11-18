@@ -4,9 +4,9 @@
     <div class="container text-center">
             {% block page_h1 %}<h1>{{ 'elephant.album.mine' | trans }}</h1>{% endblock page_h1 %}
             {% for entity in entities %}
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading" data-toggle="collapse" data-target="#collapse-{{ loop.index}}">
-                        {{ entity.title }} <span class="caret"></span>
+                        {{ entity.title | capitalize }} <span class="caret"></span>
                     </div>
                     <div id="collapse-{{ loop.index }}" class="panel-body collapse in">
                         <div class="row">
@@ -35,7 +35,7 @@
                                     {{ 'elephant.album.share' | trans }}
                                 </a>
                                 <a href="{{ path('album_delete', { 'id': entity.id }) }}"
-                                   class="btn btn-default btn-block">
+                                   class="btn btn-default btn-block text-warning">
                                     {{ 'elephant.album.delete' | trans }}
                                 </a>
                                 {% endif %}

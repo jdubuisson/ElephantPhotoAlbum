@@ -16,3 +16,11 @@ body {
 .theme-showcase .navbar .container {
     width: auto;
 }
+
+.panel-default > .panel-heading {
+    background-color: #636363;
+}
+
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+    background-color: #009871;
+}
