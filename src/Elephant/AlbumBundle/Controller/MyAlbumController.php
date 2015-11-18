@@ -41,37 +41,6 @@ class MyAlbumController extends Controller
     }
 
     /**
-     * Finds and displays a Album entity.
-     *
-     * @Route("/{id}", name="my_album_show")
-     * @Method("GET")
-     * @Template("ElephantAlbumBundle:Album:show.html.twig")
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ElephantAlbumBundle:Album')->find($id);
-
-        if($entity->getAuthor() != $this->getUser() && !$this->getUser()->getSharedAlbums()->contains($entity))
-        {
-            $this->addFlash('error','elephant.error.not_allowed');
-            return $this->redirect($this->generateUrl('elephant_website_homepage'));
-        }
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Album entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity' => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
      * Creates a new Album entity.
      *
      * @Route("/", name="album_create")
@@ -103,6 +72,56 @@ class MyAlbumController extends Controller
     }
 
     /**
+     * Displays a form to create a new Album entity.
+     *
+     * @Route("/new", name="album_new")
+     * @Method("GET")
+     * @Template()
+     */
+    public function newAction()
+    {
+        $entity = new Album();
+        $entity->addPhoto(new Photo());
+        $form = $this->createCreateForm($entity);
+
+        return array(
+            'entity' => $entity,
+            'edit_form' => $form->createView(),
+        );
+    }
+
+    /**
+     * Finds and displays a Album entity.
+     *
+     * @Route("/{id}", name="my_album_show")
+     * @Method("GET")
+     * @Template("ElephantAlbumBundle:Album:show.html.twig")
+     */
+    public function showAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('ElephantAlbumBundle:Album')->find($id);
+
+        if($entity->getAuthor() != $this->getUser() && !$this->getUser()->getSharedAlbums()->contains($entity))
+        {
+            $this->addFlash('error','elephant.error.not_allowed');
+            return $this->redirect($this->generateUrl('elephant_website_homepage'));
+        }
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Album entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+
+        return array(
+            'entity' => $entity,
+            'delete_form' => $deleteForm->createView(),
+        );
+    }
+
+    /**
      * Creates a form to create a Album entity.
      *
      * @param Album $entity The entity
@@ -121,24 +140,6 @@ class MyAlbumController extends Controller
         return $form;
     }
 
-    /**
-     * Displays a form to create a new Album entity.
-     *
-     * @Route("/new", name="album_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new Album();
-        $entity->addPhoto(new Photo());
-        $form = $this->createCreateForm($entity);
-
-        return array(
-            'entity' => $entity,
-            'edit_form' => $form->createView(),
-        );
-    }
 
     /**
      * Displays a form to edit an existing Album entity.
