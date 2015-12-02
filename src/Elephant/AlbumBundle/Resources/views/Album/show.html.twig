@@ -8,7 +8,9 @@
                 <div class="container">
                     <div class="row album">
                         <div class="col-md-9">
-                            <img src="{{ asset(photo.webPath) }}" class="img-thumbnail img-responsive center-block" alt="{{ photo.title }}">
+                            <a class="fancybox" href="{{ asset(photo.webPath) }}">
+                                <img src="{{ asset(photo.webPath) }}" class="img-thumbnail img-responsive center-block" alt="{{ photo.title }}" />
+                            </a>
                         </div>
                         <div class="col-md-3">
                             <div class="panel panel-default">
@@ -71,6 +73,7 @@
                     resizeImages();
                 }
             });
+            $("a.fancybox").fancybox();
 
         });
     </script>
