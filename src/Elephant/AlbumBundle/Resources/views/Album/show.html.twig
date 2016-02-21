@@ -1,7 +1,9 @@
 {% extends '::base.html.twig' %}
 
 {% block container %}
-
+    <div class="fullpage-title text-center">
+        <h1>{{ entity.title }}</h1>
+    </div>
     <div id="fullpage">
         {% for photo in entity.photos %}
             <div class="section">
