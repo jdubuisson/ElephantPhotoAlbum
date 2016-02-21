@@ -25,7 +25,11 @@
     border-radius: 8px;
 }
 
-.fullpage-title {
-    position: relative;
-    top: 50px;
+/*Comments*/
+.fos_comment_comment_replies.row {
+    margin-top: 15px;
+}
+
+.fos_comment_comment_reply {
+    display : inline;
 }

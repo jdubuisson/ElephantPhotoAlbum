@@ -29,10 +29,15 @@ class AppKernel extends Kernel
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-
+            #comments
+            new FOS\RestBundle\FOSRestBundle(),
+            new FOS\CommentBundle\FOSCommentBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
+            #elephant
             new Elephant\UserBundle\ElephantUserBundle(),
             new Elephant\WebsiteBundle\ElephantWebsiteBundle(),
             new Elephant\AlbumBundle\ElephantAlbumBundle(),
+            new Elephant\CommentBundle\ElephantCommentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -28,15 +28,14 @@ class AlbumController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
+    public function showAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('ElephantAlbumBundle:Album')->find($id);
 
-        if($entity->getAuthor() != $this->getUser() && !$this->getUser()->getSharedAlbums()->contains($entity))
-        {
-            $this->addFlash('error','elephant.error.not_allowed');
+        if ($entity->getAuthor() != $this->getUser() && !$this->getUser()->getSharedAlbums()->contains($entity)) {
+            $this->addFlash('error', 'elephant.error.not_allowed');
             return $this->redirect($this->generateUrl('elephant_website_homepage'));
         }
 
@@ -44,8 +43,23 @@ class AlbumController extends Controller
             throw $this->createNotFoundException('Unable to find Album entity.');
         }
 
+        // Comments and Thread management
+        $thread = $this->container->get('fos_comment.manager.thread')->findThreadById($id);
+        if (null === $thread) {
+            $thread = $this->container->get('fos_comment.manager.thread')->createThread();
+            $thread->setId($id);
+            $thread->setPermalink($request->getUri());
+
+            // Add the thread
+            $this->container->get('fos_comment.manager.thread')->saveThread($thread);
+        }
+
+        $comments = $this->container->get('fos_comment.manager.comment')->findCommentTreeByThread($thread);
+
         return array(
             'entity' => $entity,
+            'comments' => $comments,
+            'thread' => $thread,
         );
     }
 }

@@ -1,17 +1,18 @@
 {% extends '::base.html.twig' %}
 
 {% block container %}
-    <div class="fullpage-title text-center">
-        <h1>{{ entity.title }}</h1>
-    </div>
     <div id="fullpage">
         {% for photo in entity.photos %}
             <div class="section">
                 <div class="container">
                     <div class="row album">
+                        <div class="col-md-12 text-center">
+                            <h1>{{ entity.title }}</h1>
+                        </div>
                         <div class="col-md-9">
                             <a class="fancybox" href="{{ asset(photo.webPath) }}">
-                                <img src="{{ asset(photo.webPath) }}" class="img-thumbnail img-responsive center-block" alt="{{ photo.title }}" />
+                                <img src="{{ asset(photo.webPath) }}" class="img-thumbnail img-responsive center-block"
+                                     alt="{{ photo.title }}"/>
                             </a>
                         </div>
                         <div class="col-md-3">
@@ -53,30 +54,43 @@
                             </a>
                         </div>
                     {% endif %}
+
+                    <div class="col-sm-12">
+                        <div id="fos_comment_thread" data-thread="{{ thread.id }}">
+
+                            {% include 'FOSCommentBundle:Thread:comments.html.twig' with {
+                            'comments': comments,
+                            'thread': thread
+                            } %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
 
-{% block body_end %}
-    <script type="text/javascript">
-        function resizeImages() {
-            var pluginContainer = $(this);
-            $('.img-responsive').css('max-height',pluginContainer.height()-70);
-        }
+    {% block body_end %}
+        <script type="text/javascript">
+            function resizeImages() {
+                var pluginContainer = $(this);
+                $('.img-responsive').css('max-height', pluginContainer.height() - 70);
+            }
 
-        $(document).ready(function () {
-            $('#fullpage').fullpage({
-                navigation: true,
-                scrollOverflow: true,
-                afterRender: resizeImages(),
-                afterResize: function(){
-                    resizeImages();
-                }
+            $(document).ready(function () {
+                $('#fullpage').fullpage({
+                    navigation: true,
+                    scrollOverflow: true,
+                    afterRender: resizeImages(),
+                    afterResize: function () {
+                        resizeImages();
+                    }
+                });
+                $("a.fancybox").fancybox();
+
             });
-            $("a.fancybox").fancybox();
-
-        });
-    </script>
-{% endblock body_end %}
+        </script>
+        {% javascripts '@FOSCommentBundle/Resources/assets/js/comments.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock body_end %}
